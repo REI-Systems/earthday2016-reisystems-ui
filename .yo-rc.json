@@ -1,0 +1,10 @@
+{
+  "generator-ng-fullstack": {
+    "username": "hieutrang-reisys",
+    "appName": "earthday2016-reisystems-ui",
+    "stack": "client",
+    "server": "",
+    "client": "ng1",
+    "secure": true
+  }
+}
