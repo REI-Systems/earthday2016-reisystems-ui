@@ -6,7 +6,7 @@ import {tasks} from './const';
 gulp.task(tasks.CLIENT_UNIT_TEST, (done) => {
   return karma.start({
     configFile: process.cwd() + '/karma.conf.js',
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     singleRun: true
   }, done);
 });
