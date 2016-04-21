@@ -1,13 +1,13 @@
 ;(function(ng) {
   'use strict';
 
-  ng.module('earthday2016-reisystems-ui')
+  ng.module('app')
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
         .when('/', {
-          templateUrl: 'todo/templates/todo.html',
-          controller: 'TodoController',
-          controllerAs: 'todoCtrl'
+          templateUrl: 'webapp/templates/HelloWorld.html',
+          controller: 'HelloWorldCtrl',
+          controllerAs: 'hwCtrl'
         })
         .otherwise({redirectTo: '/'});
     }])

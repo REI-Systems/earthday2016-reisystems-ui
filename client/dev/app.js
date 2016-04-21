@@ -1,7 +1,7 @@
 ;(function(ng) {
   'use strict';
 
-  ng.module('earthday2016-reisystems-ui', [
+  ng.module('app', [
             'ngResource',
             'ngRoute',
             'ngMessages'
