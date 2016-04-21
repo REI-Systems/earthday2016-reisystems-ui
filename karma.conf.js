@@ -27,7 +27,7 @@ module.exports = (config) => {
 
         'tests/client/**/*_test.js',
 
-        'client/dev/partials/includes/*.html' // for templateUrl testing
+        'client/dev/webapp/templates/*.html' // for templateUrl testing
       ],
 
     // list of files to exclude
@@ -43,8 +43,8 @@ module.exports = (config) => {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors:
     {
-      'client/dev/js/**/*.js': ['coverage'],
-      'client/dev/partials/includes/*.html': ['ng-html2js']
+      'client/dev/webapp/**/*.js': ['coverage'],
+      'client/dev/webapp/templates/*.html': ['ng-html2js']
     },
 
     ngHtml2JsPreprocessor:
