@@ -15,19 +15,12 @@
           .scale(1000)
           .translate([width / 2, height / 2]);
 
-        var zoom = d3.behavior.zoom()
-          .translate([0, 0])
-          .scale(1)
-          .scaleExtent([1, 8])
-          .on("zoom", zoomed);
-
         var path = d3.geo.path()
           .projection(projection);
 
         var svg = d3.select("#map").append("svg")
           .attr("width", width)
-          .attr("height", height)
-          .on("click", stopped, true);
+          .attr("height", height);
 
         svg.append("rect")
           .attr("class", "background")
@@ -35,9 +28,8 @@
           .attr("height", height)
           .on("click", reset);
 
-        var g = svg.append("g");
-
-        svg.call(zoom.event);
+        var g = svg.append("g")
+          .style("stroke-width", "1.5px");
 
         d3.json("assets/data/us.json", function(error, us) {
           d3.tsv("assets/data/us-county-names.tsv", function(tsv) {
@@ -58,7 +50,7 @@
               .on("click", clicked);
 
             g.append("path")
-              .datum(topojson.mesh(us, us['objects']['states'], function(a, b) { return a !== b; }))
+              .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
               .attr("class", "mesh")
               .attr("d", path);
           });
@@ -77,27 +69,20 @@
             scale = .9 / Math.max(dx / width, dy / height),
             translate = [width / 2 - scale * x, height / 2 - scale * y];
 
-          svg.transition()
+          g.transition()
             .duration(750)
-            .call(zoom.translate(translate).scale(scale).event);
+            .style("stroke-width", 1.5 / scale + "px")
+            .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
         }
 
         function reset() {
           active.classed("active", false);
           active = d3.select(null);
 
-          svg.transition()
+          g.transition()
             .duration(750)
-            .call(zoom.translate([0, 0]).scale(1).event);
-        }
-
-        function zoomed() {
-          g.style("stroke-width", 1.5 / d3.event.scale + "px");
-          g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-        }
-
-        function stopped() {
-          if (d3.event.defaultPrevented) d3.event.stopPropagation();
+            .style("stroke-width", "1.5px")
+            .attr("transform", "");
         }
       };
 
