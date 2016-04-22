@@ -25,5 +25,10 @@
     }])
     .config(['$locationProvider', function($locationProvider) {
       $locationProvider.html5Mode(true);
-    }]);
+    }])
+    .config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('green')
+        .accentPalette('light-green');
+    });
 }(window.angular));
