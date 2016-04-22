@@ -1,8 +1,13 @@
 <div ng-controller="HelloWorldCtrl" layout-fill ng-cloak>
 
   <md-content layout="column">
-    <md-toolbar class="md-theme-indigo">
-      <h1 class="md-toolbar-tools">Navigation</h1>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
+          <i class="sidebar icon"></i>
+        </md-button>
+        <h1 hide-xs hide-sm show-gt-sm>Navigation</h1>
+      </div>
     </md-toolbar>
   </md-content>
 
