@@ -15,6 +15,8 @@
       var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
       var y = d3.scale.linear().range([height, 0]);
 
+      var color = d3.scale.category20();
+
       angular.forEach($scope.data, function(d) {
         d.amount = (d.amountSustainable / d.amount) * 100;
       });
@@ -64,7 +66,7 @@
       svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
-        .style("fill", "steelblue")
+        .style("fill", function(d,i){return color(i);})
         .attr("x", function(d) { return x(d.name); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.amount); })
