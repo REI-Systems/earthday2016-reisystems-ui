@@ -31,12 +31,22 @@
         var g = svg.append("g")
           .style("stroke-width", "1.5px");
 
+
         d3.json("assets/data/us.json", function(error, us) {
           d3.tsv("assets/data/us-county-names.tsv", function(tsv) {
             var names = {};
             tsv.forEach(function(d,i){
               names[d.id] = d.code;
             });
+
+            var tip = d3.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d) {
+                return "<strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]];
+              });
+
+            svg.call(tip);
 
             g.selectAll("path")
               .data(topojson.feature(us, us.objects.states).features)
@@ -47,6 +57,8 @@
                 var d = $scope.data[names[data['id']]] || Math.floor(Math.random()*1000);
                 return colorScale(d);
               })
+              .on('mouseover', tip.show)
+              .on('mouseout', tip.hide)
               .on("click", clicked);
 
             g.append("path")
@@ -95,7 +107,7 @@
           var d = {};
 
           angular.forEach(data['_embedded']['contextBasedSpendingList'], function(c) {
-            d[c['acronym']] = c['amountSustainable'];
+            d[c['acronym']] = d3.format('.2f')((c['amountSustainable'] / c['amount']) * 100);
           });
           $scope.data = d;
           $scope.min = 0;
