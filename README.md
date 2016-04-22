@@ -3,6 +3,8 @@
 
 [![Code Climate](https://codeclimate.com/github/REI-Systems/earthday2016-reisystems-ui/badges/gpa.svg)](https://codeclimate.com/github/REI-Systems/earthday2016-reisystems-ui)
 
+Trello - https://trello.com/b/OJQy8Ub4/earth-day-hackathon
+
 ## Install
     $ npm install && bower install
 
@@ -15,3 +17,5 @@
 ## Links
 
 * https://github.com/ericmdantas/generator-ng-fullstack
+
+
