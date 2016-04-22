@@ -1,2 +1,3 @@
-db
 node_modules
+client/dev/bower_components
+unit_coverage
