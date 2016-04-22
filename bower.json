@@ -28,7 +28,10 @@
     "angular-resource": "~1.4.x",
     "bootstrap": "3.3.1",
     "fontawesome": "~4.3.0",
-    "semantic-ui": "~2.1.8"
+    "semantic-ui": "~2.1.8",
+    "d3": "~3.5.16",
+    "topojson": "~1.6.24",
+    "datatables": "~1.10.11"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.x"
