@@ -3,7 +3,7 @@
 
   var myApp = angular.module('app');
 
-  myApp.controller('BarChartCtrl', ['$scope', '$document', 'Agencies', function($scope, $document, Agencies) {
+  myApp.controller('BarChartCtrl', ['$scope', '$document', 'Agencies', 'd3Service', function($scope, $document, Agencies, d3Service) {
     $scope.drawBarTrend = function() {
 
       var data = $scope.data;
@@ -15,7 +15,7 @@
       var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
       var y = d3.scale.linear().range([height, 0]);
 
-      var color = d3.scale.category20();
+      var color = d3Service.colorScale(0, 100);
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
@@ -74,7 +74,7 @@
       svg.selectAll("bar")
         .data(data)
         .enter().append("rect")
-        .style("fill", function(d,i){return color(i);})
+        .style("fill", function(d,i){return color(d['amount']);})
         .attr("x", function(d) { return x(d.name); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.amount); })
