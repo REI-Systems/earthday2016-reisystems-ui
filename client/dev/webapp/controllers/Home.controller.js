@@ -13,7 +13,7 @@
       $scope.amount = response.data.amount;
       $scope.amountSustainable = response.data.amountSustainable;
       $scope.percentage = d3.format('.2f')(($scope.amountSustainable / $scope.amount) * 100);
-      $scope.formattedAmount = d3.format('0,000')($scope.amount);
+      $scope.formattedAmount = d3.format('2s')($scope.amount);
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
