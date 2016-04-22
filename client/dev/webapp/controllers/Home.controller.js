@@ -3,9 +3,7 @@
 
   var myApp = angular.module('app');
 
-  myApp.controller('HelloWorldCtrl', ['$scope','$timeout','$mdSidenav', '$log', function ($scope,$timeout,$mdSidenav, $log) {
-
-    $scope.HelloWorld = 'Hello World!';
+  myApp.controller('HomeCtrl', ['$scope','$timeout','$mdSidenav', '$log', function ($scope,$timeout,$mdSidenav, $log) {
 
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
