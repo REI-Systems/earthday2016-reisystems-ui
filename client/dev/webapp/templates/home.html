@@ -1,0 +1,65 @@
+<div ng-controller="HomeCtrl" layout-fill ng-cloak>
+
+  <md-content layout="column">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
+          <i class="sidebar icon"></i>
+        </md-button>
+        <h1 hide-xs hide-sm show-gt-sm>Navigation</h1>
+      </div>
+    </md-toolbar>
+  </md-content>
+
+  <section layout="row" layout-fill flex>
+    <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-disable-backdrop md-whiteframe="4">
+      <md-toolbar class="md-theme-light" hide-gt-sm>
+        <h1 class="md-toolbar-tools">Sidenav Left</h1>
+      </md-toolbar>
+      <md-content layout-padding ng-controller="LeftCtrl">
+        <p>
+          left content
+        </p>
+        <md-button ng-click="close()" class="md-primary" hide-gt-sm>
+          Close Sidenav Left
+        </md-button>
+      </md-content>
+    </md-sidenav>
+
+    <md-content flex layout-padding>
+      <div layout="column" layout-fill layout-align="top center">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer augue mauris, feugiat sed molestie eu, viverra non lectus. Vestibulum id nunc sapien. Pellentesque tincidunt eget tortor sed tristique. Ut interdum sed est sed egestas. Pellentesque malesuada aliquet diam, ut euismod nisl maximus vel. Praesent aliquet mi in tellus facilisis, id imperdiet lorem mattis. Morbi sit amet iaculis nulla, at vulputate felis. Nam congue venenatis nisl at vehicula.
+        </p>
+        <ul>
+            <li><a href="/map">Map</a></li>
+            <li><a href="/table">Table</a></li>
+            <li><a href="/trend">trend</a></li>
+          </ul>
+        <div>
+          <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
+            Toggle left
+          </md-button>
+        </div>
+        <div>
+          <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
+            Toggle right
+          </md-button>
+        </div>
+      </div>
+      <div flex></div>
+    </md-content>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Sidenav Right</h1>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding>
+        <md-button ng-click="close()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+    </md-sidenav>
+
+  </section>
+</div>
