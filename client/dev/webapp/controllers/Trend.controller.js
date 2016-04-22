@@ -10,19 +10,17 @@
         height = 500 - margin.top - margin.bottom;
 
       angular.forEach($scope.data, function(d) {
-        d.date = new Date(d.date);
-        d.amountSustainable = +d.amountSustainable;
+        d.amount = +d.amount;
+        d.date = new Date("01-01-" + d.year);
       });
 
-      var x = d3.time.scale()
-        .range([0, width]);
+      var x = d3.time.scale().range([0, width]);
 
       var y = d3.scale.linear()
         .range([height, 0]);
 
-      var xAxis = d3.svg.axis()
-        .scale(x)
-        .orient("bottom");
+      var xAxis = d3.svg.axis().scale(x)
+        .orient("bottom").ticks(5);
 
       var yAxis = d3.svg.axis()
         .scale(y)
@@ -30,7 +28,7 @@
 
       var line = d3.svg.line()
         .x(function(d) { return x(d.date); })
-        .y(function(d) { return y(d.amountSustainable); });
+        .y(function(d) { return y(d.amount); });
 
       var svg = d3.select("#trend").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -39,7 +37,7 @@
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
       x.domain(d3.extent($scope.data, function(d) { return d.date; }));
-      y.domain(d3.extent($scope.data, function(d) { return d.amountSustainable; }));
+      y.domain(d3.extent($scope.data, function(d) { return d.amount; }));
 
       svg.append("g")
         .attr("class", "x axis")
@@ -54,7 +52,7 @@
         .attr("y", 6)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
-        .text("Price ($)");
+        .text("% Amount Sustainable");
 
       svg.append("path")
         .datum($scope.data)
@@ -64,7 +62,18 @@
 
     $document.ready(function() {
       AgencyTrends.get(function(data) {
-        $scope.data = data['_embedded']['trend'];
+        var d = [];
+
+        angular.forEach(data['_embedded']['trend'], function(c) {
+          d.push({
+            amount: d3.format('.2f')((c['amountSustainable'] / c['amount']) * 100),
+            year: c.year
+          });
+        });
+        d.sort(function(x, y){
+          return d3.ascending(x.year, y.year);
+        });
+        $scope.data = d;
         $scope.drawTrend();
       });
     });
