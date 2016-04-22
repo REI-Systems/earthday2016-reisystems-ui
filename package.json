@@ -3,13 +3,11 @@
   "version": "0.0.1",
   "main": "src/earthday2016-reisystems-ui.js",
   "scripts": {
-    "start": "aliv",
     "test": "gulp client.unit_test",
     "build-dist": "gulp client.build:dist",
     "build-assets": "gulp client.build:dist"
   },
   "dependencies": {
-    "aliv": "1.1.2",
     "newrelic": "^1.18.2",
     "helmet": "^0.7.1"
   },
