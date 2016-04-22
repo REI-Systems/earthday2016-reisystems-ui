@@ -5,7 +5,6 @@
   "scripts": {
     "start": "node server.js",
     "test": "gulp client.unit_test",
-    "postinstall": "gulp client.build:dist",
     "build-dist": "gulp client.build:dist"
   },
   "dependencies": {
