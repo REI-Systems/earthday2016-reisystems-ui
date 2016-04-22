@@ -7,7 +7,7 @@
     "test": "gulp client.unit_test",
     "build-dist": "gulp client.build:dist"
   },
-  "dependencies": {     
+  "dependencies": {
     "newrelic": "^1.18.2",
     "helmet": "^0.7.1"
   },
@@ -53,14 +53,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/hieutrang-reisys/earthday2016-reisystems-ui.git"
+    "url": "https://github.com/REI-Systems/earthday2016-reisystems-ui.git"
   },
   "author": "hieutrang-reisys",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hieutrang-reisys/earthday2016-reisystems-ui/issues"
+    "url": "https://github.com/REI-Systems/earthday2016-reisystems-ui/issues"
   },
-  "homepage": "https://github.com/hieutrang-reisys/earthday2016-reisystems-ui",
+  "homepage": "https://github.com/REI-Systems/earthday2016-reisystems-ui",
   "engines": {
     "node": "stable"
   }
