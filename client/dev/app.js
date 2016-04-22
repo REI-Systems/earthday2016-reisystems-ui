@@ -4,6 +4,8 @@
   ng.module('app', [
             'ngResource',
             'ngRoute',
-            'ngMessages'
+            'ngMessages',
+            'ngMaterial',
+            'ngAnimate'
           ]);
 }(window.angular));
