@@ -8,6 +8,10 @@
           templateUrl: 'webapp/templates/home.html',
           controller: 'HomeCtrl'
         })
+        .when('/about', {
+          templateUrl: 'webapp/templates/about.html',
+          controller: 'AboutCtrl'
+        })
         .when('/map', {
           templateUrl: 'webapp/templates/map.html',
           controller: 'MapCtrl'
