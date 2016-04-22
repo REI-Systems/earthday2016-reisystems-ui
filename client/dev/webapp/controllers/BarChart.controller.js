@@ -17,6 +17,13 @@
 
       var color = d3.scale.category20();
 
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+          return "<strong>Agency:</strong> " + d.name +"<br/><strong>Amount Sustainable:</strong> " + d.amount + "%";
+        });
+
       angular.forEach($scope.data, function(d) {
         d.amount = (d.amountSustainable / d.amount) * 100;
       });
@@ -43,6 +50,8 @@
       x.domain(data.map(function(d) { return d.name; }));
       y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
+      svg.call(tip);
+
       svg.append("g")
         .attr("class", "x axis")
         .attr("transform", "translate(0," + height + ")")
@@ -60,8 +69,7 @@
         .attr("transform", "rotate(-90)")
         .attr("y", 6)
         .attr("dy", ".71em")
-        .style("text-anchor", "end")
-        .text("Sustainable (%)");
+        .style("text-anchor", "end");
 
       svg.selectAll("bar")
         .data(data)
@@ -70,7 +78,9 @@
         .attr("x", function(d) { return x(d.name); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.amount); })
-        .attr("height", function(d) { return height - y(d.amount); });
+        .attr("height", function(d) { return height - y(d.amount); })
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
     };
 
     $document.ready(function() {
