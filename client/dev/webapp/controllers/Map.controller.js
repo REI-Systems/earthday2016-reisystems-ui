@@ -109,7 +109,7 @@
         StateData.list(function(data) {
           var d = {};
 
-          angular.forEach(data['_embedded']['collection'], function(c) {
+          angular.forEach(data['_embedded']['contextBasedSpendingList'], function(c) {
             d[c['acronym']] = c['amountSustainable'];
           });
           $scope.data = d;
