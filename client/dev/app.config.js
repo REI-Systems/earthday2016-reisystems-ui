@@ -13,6 +13,10 @@
           templateUrl: 'webapp/templates/map.html',
           controller: 'MapCtrl'
         })
+        .when('/bubble', {
+          templateUrl: 'webapp/templates/bubble.html',
+          controller: 'BubbleCtrl'
+        })
         .when('/table', {
           templateUrl: 'webapp/templates/table.html',
           controller: 'TableCtrl'
