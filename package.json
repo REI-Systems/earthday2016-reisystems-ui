@@ -1,10 +1,11 @@
 {
   "name": "earthday2016-reisystems-ui",
   "version": "0.0.1",
-  "main": "src/earthday2016-reisystems-ui.js",
+  "main": "server.js",
   "scripts": {
-    "start": "aliv",
+    "start": "node server.js"
     "test": "gulp client.unit_test",
+    "postinstall": "gulp client.build:dist",
     "build-dist": "gulp client.build:dist"
   },
   "dependencies": {

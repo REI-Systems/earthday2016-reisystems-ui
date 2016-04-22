@@ -14,3 +14,7 @@
   stroke: steelblue;
   stroke-width: 1.5px;
 }
+
+.x.axis .tick {
+    font-size: 11px;
+}
