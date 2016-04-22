@@ -4,12 +4,12 @@
   malesuada aliquet diam, ut euismod nisl maximus vel. Praesent aliquet mi in tellus facilisis, id imperdiet lorem mattis.
   Morbi sit amet iaculis nulla, at vulputate felis. Nam congue venenatis nisl at vehicula.
 </p>
-<ul>
-  <li><a href="/map">Map</a></li>
-  <li><a href="/table">Table</a></li>
-  <li><a href="/trend">trend</a></li>
-</ul>
+<div id="map" ng-controller="MapCtrl"></div>
+<div id="table" ng-controller="TableCtrl"></div>
+<div id="trend" ng-controller="TrendCtrl"></div>
+
 <div>
   <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
     Toggle left
   </md-button>
+</div>
