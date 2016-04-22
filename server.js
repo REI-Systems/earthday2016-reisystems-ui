@@ -1,3 +1,3 @@
 const Server = require('aliv');
 
-new Server({quiet: true, port: 8080, pathIndex: "client/dev", only: "client/dev/**/*"}).start();
+new Server({quiet: true, port: process.env.PORT || 3000, pathIndex: "client/dev", only: "client/dev/**/*"}).start();
