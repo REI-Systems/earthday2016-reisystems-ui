@@ -43,7 +43,7 @@
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d) {
-                return "<strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]];
+                return "<strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]] + "%";
               });
 
             svg.call(tip);
