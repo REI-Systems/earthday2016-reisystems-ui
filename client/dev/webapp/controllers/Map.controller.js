@@ -91,7 +91,7 @@
       };
 
       $document.ready(function() {
-        StateData.list(function(data) {
+        StateData.get(function(data) {
           var d = {};
 
           angular.forEach(data['_embedded']['contextBasedSpendingList'], function(c) {
