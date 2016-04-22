@@ -15,8 +15,10 @@
 
   <!-- Semantic-ui CSS -->
   <link type="text/css" rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.min.css?rev=@@hash" />
-  <link type="text/css" rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css?rev=@@hash"/>
-  <link type="text/css" rel="stylesheet" href="bower_components/datatables/media/css/dataTables.semanticui.min.css?rev=@@hash"/>
+  <link type="text/css" rel="stylesheet" href="bower_components/datatables/media/css/jquery.dataTables.min.css?rev=@@hash"
+  />
+  <link type="text/css" rel="stylesheet" href="bower_components/datatables/media/css/dataTables.semanticui.min.css?rev=@@hash"
+  />
 
   <!-- Font Awesome -->
   <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css?rev=@@hash" />
@@ -41,6 +43,17 @@
             <i class="sidebar icon" style="margin-top: 4px"></i>
           </md-button>
           <h1 hide-xs hide-sm show-gt-sm style="color: #fff; font-weight: 700;">Federal Dashboard on Sustainable Purchasing</h1>
+          <span flex></span>
+          <div class="ui label">
+            <i class="mail icon"></i> 100M
+            <a class="detail">Total Federal Spending</a>
+          </div>
+          <md-button class="md-icon-button" aria-label="Favorite">
+            num1
+          </md-button>
+          <md-button class="md-icon-button" aria-label="More">
+            num2
+          </md-button>
         </div>
       </md-toolbar>
     </md-content>
@@ -118,46 +131,45 @@
 
       ga('create', 'UA-XXXXX-X', 'auto');
       ga('send', 'pageview');
+  </script>
 
-    </script>
+  <script type="text/javascript" src="bower_components/jquery/dist/jquery.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/angular/angular.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/angular-messages/angular-messages.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/angular-route/angular-route.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/datatables/media/js/jquery.dataTables.min.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/datatables/media/js/dataTables.semanticui.min.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/d3/d3.min.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/topojson/topojson.js?rev=@@hash"></script>
 
-    <script type="text/javascript" src="bower_components/jquery/dist/jquery.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/angular/angular.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/angular-messages/angular-messages.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/angular-route/angular-route.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/datatables/media/js/jquery.dataTables.min.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/datatables/media/js/dataTables.semanticui.min.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/d3/d3.min.js?rev=@@hash"></script>
-    <script type="text/javascript" src="bower_components/topojson/topojson.js?rev=@@hash"></script>
+  <!-- Angular Animate -->
+  <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js?rev=@@hash"></script>
 
-    <!-- Angular Animate -->
-    <script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js?rev=@@hash"></script>
+  <!-- Angular Aria -->
+  <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js?rev=@@hash"></script>
 
-    <!-- Angular Aria -->
-    <script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js?rev=@@hash"></script>
+  <!-- Angular Material -->
+  <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js?rev=@@hash"></script>
 
-    <!-- Angular Material -->
-    <script type="text/javascript" src="bower_components/angular-material/angular-material.min.js?rev=@@hash"></script>
+  <!-- Semantic-ui JS -->
+  <script type="text/javascript" src="bower_components/semantic-ui/dist/semantic.min.js?rev=@@hash"></script>
 
-    <!-- Semantic-ui JS -->
-    <script type="text/javascript" src="bower_components/semantic-ui/dist/semantic.min.js?rev=@@hash"></script>
+  <script type="text/javascript" src="bower_components/d3-tip/index.js?rev=@@hash"></script>
 
-    <script type="text/javascript" src="bower_components/d3-tip/index.js?rev=@@hash"></script>
+  <script type="text/javascript" src="app.js?rev=@@hash"></script>
+  <script type="text/javascript" src="app.config.js?rev=@@hash"></script>
+  <script type="text/javascript" src="app.constants.js?rev=@@hash"></script>
 
-    <script type="text/javascript" src="app.js?rev=@@hash"></script>
-    <script type="text/javascript" src="app.config.js?rev=@@hash"></script>
-    <script type="text/javascript" src="app.constants.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/controllers/Home.controller.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/services/d3.services.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/controllers/Map.controller.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/controllers/Table.controller.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/controllers/Bubble.controller.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/controllers/Trend.controller.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/factories/table.factory.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/factories/state.factory.js?rev=@@hash"></script>
+  <script type="text/javascript" src="webapp/factories/trend.factory.js?rev=@@hash"></script>
+</body>
 
-    <script type="text/javascript" src="webapp/controllers/Home.controller.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/services/d3.services.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/controllers/Map.controller.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/controllers/Table.controller.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/controllers/Bubble.controller.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/controllers/Trend.controller.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/factories/table.factory.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/factories/state.factory.js?rev=@@hash"></script>
-    <script type="text/javascript" src="webapp/factories/trend.factory.js?rev=@@hash"></script>
-  </body>
 </html>
-

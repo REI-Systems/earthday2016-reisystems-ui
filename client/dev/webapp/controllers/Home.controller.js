@@ -3,11 +3,25 @@
 
   var myApp = angular.module('app');
 
-  myApp.controller('HomeCtrl', ['$scope','$timeout','$mdSidenav', '$log', function ($scope,$timeout,$mdSidenav, $log) {
+  myApp.controller('HomeCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function ($scope, $timeout, $mdSidenav, $log, $http) {
+
+    $http({
+      method: 'GET',
+      url: 'https://earthday2016-reisystems.herokuapp.com/api/v1/fpds/spending'
+    }).then(function successCallback(response) {
+      
+      $scope.amount = response.data.amount;
+      $scope.amountSustainable = response.data.amountSustainable;
+      $scope.percentage = d3.format('.2f')(($scope.amountSustainable / $scope.amount) * 100);
+      $scope.formattedAmount = d3.format('0,000')($scope.amount);
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
 
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
-    $scope.isOpenRight = function(){
+    $scope.isOpenRight = function () {
       return $mdSidenav('right').isOpen();
     };
 
@@ -19,9 +33,9 @@
       var timer;
       return function debounced() {
         var context = $scope,
-            args = Array.prototype.slice.call(arguments);
+          args = Array.prototype.slice.call(arguments);
         $timeout.cancel(timer);
-        timer = $timeout(function() {
+        timer = $timeout(function () {
           timer = undefined;
           func.apply(context, args);
         }, wait || 10);
@@ -33,7 +47,7 @@
      * report completion in console
      */
     function buildDelayedToggler(navID) {
-      return debounce(function() {
+      return debounce(function () {
         // Component lookup should always be available since we are not using `ng-if`
         $mdSidenav(navID)
           .toggle()
@@ -44,7 +58,7 @@
     }
 
     function buildToggler(navID) {
-      return function() {
+      return function () {
         // Component lookup should always be available since we are not using `ng-if`
         $mdSidenav(navID)
           .toggle()
@@ -56,25 +70,25 @@
 
   }])
 
-  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('left').close()
-        .then(function () {
-          $log.debug("close LEFT is done");
-        });
-    };
-  })
+    .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+      $scope.close = function () {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav('left').close()
+          .then(function () {
+            $log.debug("close LEFT is done");
+          });
+      };
+    })
 
-  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('right').close()
-        .then(function () {
-          $log.debug("close RIGHT is done");
-        });
-    };
-  });
+    .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+      $scope.close = function () {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav('right').close()
+          .then(function () {
+            $log.debug("close RIGHT is done");
+          });
+      };
+    });
 
 
-}();
+} ();
