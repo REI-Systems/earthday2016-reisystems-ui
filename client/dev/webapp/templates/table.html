@@ -1,12 +1,28 @@
-<div id="table">
-  <table>
-  <tbody ng:repeat="row in rows">
-    <tr>
-      <td>{{row.acronym}}</td>
-      <td>{{row.name}}</td>
-      <td>{{row.amount}}</td>
-      <td>{{$index}}</td>
-    </tr>
+<a href="/">&lt;-- Home</a>
+
+<div ng-hide="rows">
+  Loading...
+</div>
+
+<table class="md-api-table">
+  <tbody ng-repeat="row in rows">
+  <tr>
+    <th>{{$index}}</th>
+    <td>{{row.identifier}}</td>
+    <td>{{row.acronym}}</td>
+    <td>{{row.name}}</td>
+    <td>{{row.amount}}</td>
+  </tr>
   </tbody>
 </table>
+
+<div ng-show="rows">
+  <p>Current page:
+    <input type="number" min="1" max="{{ pagination.getTotalPages() }}" ng-model="pagination.pageNumber"
+           ng-change="load()">of {{ pagination.getTotalPages() }}
+  </p>
+  <button type="button" class="btn btn-success" ng-click="pagination.previousPage()">previous page</button>
+  <button type="button" class="btn btn-success" ng-click="pagination.nextPage()">next page</button>
 </div>
+
+
