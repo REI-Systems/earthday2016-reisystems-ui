@@ -21,6 +21,10 @@
           templateUrl: 'webapp/templates/table.html',
           controller: 'TableCtrl'
         })
+        .when('/trend', {
+          templateUrl: 'webapp/templates/trend.html',
+          controller: 'TrendCtrl'
+        })
         .otherwise({redirectTo: '/'});
     }])
     .config(['$locationProvider', function($locationProvider) {
