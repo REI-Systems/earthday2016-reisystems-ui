@@ -2,100 +2,123 @@
   'use strict';
 
   var myApp = angular.module('app');
-  myApp.controller('MapCtrl', ['$scope', '$document', 'd3Service', function($scope, $document, d3Service) {
-    $scope.drawMap = function() {
-      var width = 960,
-        height = 500,
-        active = d3.select(null);
+  myApp.controller('MapCtrl', ['$scope', '$document', 'd3Service', 'StateData',
+    function($scope, $document, d3Service, StateData) {
+      $scope.drawMap = function() {
+        var width = 960,
+          height = 500,
+          active = d3.select(null);
 
-      var projection = d3.geo.albersUsa()
-        .scale(1000)
-        .translate([width / 2, height / 2]);
+        var colorScale = d3Service.colorScale($scope.min, $scope.max);
 
-      var zoom = d3.behavior.zoom()
-        .translate([0, 0])
-        .scale(1)
-        .scaleExtent([1, 8])
-        .on("zoom", zoomed);
+        var projection = d3.geo.albersUsa()
+          .scale(1000)
+          .translate([width / 2, height / 2]);
 
-      var path = d3.geo.path()
-        .projection(projection);
+        var zoom = d3.behavior.zoom()
+          .translate([0, 0])
+          .scale(1)
+          .scaleExtent([1, 8])
+          .on("zoom", zoomed);
 
-      var svg = d3.select("#map").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .on("click", stopped, true);
+        var path = d3.geo.path()
+          .projection(projection);
 
-      svg.append("rect")
-        .attr("class", "background")
-        .attr("width", width)
-        .attr("height", height)
-        .on("click", reset);
+        var svg = d3.select("#map").append("svg")
+          .attr("width", width)
+          .attr("height", height)
+          .on("click", stopped, true);
 
-      var g = svg.append("g");
+        svg.append("rect")
+          .attr("class", "background")
+          .attr("width", width)
+          .attr("height", height)
+          .on("click", reset);
 
-      svg
-        .call(zoom.event);
+        var g = svg.append("g");
 
-      d3.json("assets/data/us.json", function(error, us) {
-        if (error) throw error;
+        svg.call(zoom.event);
 
-        g.selectAll("path")
-          .data(topojson.feature(us, us.objects.states).features)
-          .enter().append("path")
-          .attr("d", path)
-          .attr("class", "feature")
-          .attr("fill", function() {
-            console.log(arguments);
-            return d3Service.colorScale(Math.floor(Math.random()*100));
-          })
-          .on("click", clicked);
+        d3.json("assets/data/us.json", function(error, us) {
+          d3.tsv("assets/data/us-county-names.tsv", function(tsv) {
+            var names = {};
+            tsv.forEach(function(d,i){
+              names[d.id] = d.code;
+            });
 
-        g.append("path")
-          .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-          .attr("class", "mesh")
-          .attr("d", path);
+            g.selectAll("path")
+              .data(topojson.feature(us, us.objects.states).features)
+              .enter().append("path")
+              .attr("d", path)
+              .attr("class", "feature")
+              .attr("fill", function(data) {
+                var d = $scope.data[names[data['id']]] || Math.floor(Math.random()*1000);
+                return colorScale(d);
+              })
+              .on("click", clicked);
+
+            g.append("path")
+              .datum(topojson.mesh(us, us['objects']['states'], function(a, b) { return a !== b; }))
+              .attr("class", "mesh")
+              .attr("d", path);
+          });
+        });
+
+        function clicked(d) {
+          if (active.node() === this) return reset();
+          active.classed("active", false);
+          active = d3.select(this).classed("active", true);
+
+          var bounds = path.bounds(d),
+            dx = bounds[1][0] - bounds[0][0],
+            dy = bounds[1][1] - bounds[0][1],
+            x = (bounds[0][0] + bounds[1][0]) / 2,
+            y = (bounds[0][1] + bounds[1][1]) / 2,
+            scale = .9 / Math.max(dx / width, dy / height),
+            translate = [width / 2 - scale * x, height / 2 - scale * y];
+
+          svg.transition()
+            .duration(750)
+            .call(zoom.translate(translate).scale(scale).event);
+        }
+
+        function reset() {
+          active.classed("active", false);
+          active = d3.select(null);
+
+          svg.transition()
+            .duration(750)
+            .call(zoom.translate([0, 0]).scale(1).event);
+        }
+
+        function zoomed() {
+          g.style("stroke-width", 1.5 / d3.event.scale + "px");
+          g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+        }
+
+        function stopped() {
+          if (d3.event.defaultPrevented) d3.event.stopPropagation();
+        }
+      };
+
+      $scope.drawLegend = function() {
+        //  TODO
+      };
+
+      $document.ready(function() {
+        StateData.list(function(data) {
+          var d = {};
+
+          angular.forEach(data['_embedded']['collection'], function(c) {
+            d[c['acronym']] = c['amountSustainable'];
+          });
+          $scope.data = d;
+          $scope.min = 0;
+          $scope.max = d3.max(d3.values(d));
+          $scope.drawMap();
+          $scope.drawLegend();
+        });
       });
-
-      function clicked(d) {
-        if (active.node() === this) return reset();
-        active.classed("active", false);
-        active = d3.select(this).classed("active", true);
-
-        var bounds = path.bounds(d),
-          dx = bounds[1][0] - bounds[0][0],
-          dy = bounds[1][1] - bounds[0][1],
-          x = (bounds[0][0] + bounds[1][0]) / 2,
-          y = (bounds[0][1] + bounds[1][1]) / 2,
-          scale = .9 / Math.max(dx / width, dy / height),
-          translate = [width / 2 - scale * x, height / 2 - scale * y];
-
-        svg.transition()
-          .duration(750)
-          .call(zoom.translate(translate).scale(scale).event);
-      }
-
-      function reset() {
-        active.classed("active", false);
-        active = d3.select(null);
-
-        svg.transition()
-          .duration(750)
-          .call(zoom.translate([0, 0]).scale(1).event);
-      }
-
-      function zoomed() {
-        g.style("stroke-width", 1.5 / d3.event.scale + "px");
-        g.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-      }
-
-      function stopped() {
-        if (d3.event.defaultPrevented) d3.event.stopPropagation();
-      }
-    };
-
-    $document.ready(function() {
-      $scope.drawMap();
-    });
-  }]);
+    }
+  ]);
 }();
