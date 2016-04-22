@@ -2,7 +2,7 @@
   'use strict';
 
   var myApp = angular.module('app');
-  myApp.controller('MapCtrl', ['$scope', '$document', function($scope, $document) {
+  myApp.controller('MapCtrl', ['$scope', '$document', 'd3Service', function($scope, $document, d3Service) {
     $scope.drawMap = function() {
       var width = 960,
         height = 500,
@@ -35,7 +35,6 @@
       var g = svg.append("g");
 
       svg
-        .call(zoom) // delete this line to disable free zooming
         .call(zoom.event);
 
       d3.json("assets/data/us.json", function(error, us) {
@@ -46,6 +45,10 @@
           .enter().append("path")
           .attr("d", path)
           .attr("class", "feature")
+          .attr("fill", function() {
+            console.log(arguments);
+            return d3Service.colorScale(Math.floor(Math.random()*100));
+          })
           .on("click", clicked);
 
         g.append("path")
