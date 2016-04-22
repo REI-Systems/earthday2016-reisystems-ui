@@ -8,6 +8,7 @@
     "build-dist": "gulp client.build:dist"
   },
   "dependencies": {
+    "aliv": "1.1.2",
     "newrelic": "^1.18.2",
     "helmet": "^0.7.1"
   },
