@@ -29,6 +29,6 @@
     .config(function($mdThemingProvider) {
       $mdThemingProvider.theme('default')
         .primaryPalette('green')
-        .accentPalette('light-green');
+        .accentPalette('amber');
     });
 }(window.angular));
