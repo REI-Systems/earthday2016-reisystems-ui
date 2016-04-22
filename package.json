@@ -6,7 +6,7 @@
     "start": "node server.js",
     "test": "gulp client.unit_test",
     "build-dist": "gulp client.build:dist",
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "bower install"
   },
   "dependencies": {
     "bower": "^1.7.9",
