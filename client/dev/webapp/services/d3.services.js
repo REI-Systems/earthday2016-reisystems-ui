@@ -4,8 +4,10 @@
   var myApp = angular.module('app');
 
   myApp.service('d3Service', [function() {
-    this.colorScale = d3.scale.linear()
-      .domain([0, 100])
-      .range(["#E3F2FD", "#1A237E"]);
+    this.colorScale = function (min, max) {
+      return d3.scale.linear()
+        .domain([min, max])
+        .range(["#E3F2FD", "#1A237E"]);
+    };
   }]);
 }();
