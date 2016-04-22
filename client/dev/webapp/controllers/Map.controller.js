@@ -25,8 +25,7 @@
         svg.append("rect")
           .attr("class", "background")
           .attr("width", width)
-          .attr("height", height)
-          .on("click", reset);
+          .attr("height", height);
 
         var g = svg.append("g")
           .style("stroke-width", "1.5px");
@@ -58,8 +57,7 @@
                 return colorScale(d);
               })
               .on('mouseover', tip.show)
-              .on('mouseout', tip.hide)
-              .on("click", clicked);
+              .on('mouseout', tip.hide);
 
             g.append("path")
               .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
@@ -67,35 +65,6 @@
               .attr("d", path);
           });
         });
-
-        function clicked(d) {
-          if (active.node() === this) return reset();
-          active.classed("active", false);
-          active = d3.select(this).classed("active", true);
-
-          var bounds = path.bounds(d),
-            dx = bounds[1][0] - bounds[0][0],
-            dy = bounds[1][1] - bounds[0][1],
-            x = (bounds[0][0] + bounds[1][0]) / 2,
-            y = (bounds[0][1] + bounds[1][1]) / 2,
-            scale = .9 / Math.max(dx / width, dy / height),
-            translate = [width / 2 - scale * x, height / 2 - scale * y];
-
-          g.transition()
-            .duration(750)
-            .style("stroke-width", 1.5 / scale + "px")
-            .attr("transform", "translate(" + translate + ")scale(" + scale + ")");
-        }
-
-        function reset() {
-          active.classed("active", false);
-          active = d3.select(null);
-
-          g.transition()
-            .duration(750)
-            .style("stroke-width", "1.5px")
-            .attr("transform", "");
-        }
       };
 
       $scope.drawLegend = function() {
