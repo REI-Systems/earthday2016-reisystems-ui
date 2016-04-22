@@ -5,15 +5,16 @@
   "scripts": {
     "start": "node server.js",
     "test": "gulp client.unit_test",
-    "build-dist": "gulp client.build:dist"
+    "build-dist": "gulp client.build:dist",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
-    "aliv": "^1.1.2",
+    "bower": "^1.7.9",
+    "express": "^4.13.4",
     "helmet": "^0.7.1",
     "newrelic": "^1.18.2"
   },
   "devDependencies": {
-    "aliv": "^1.1.2",
     "babel": "^6.1.18",
     "babel-cli": "^6.2.0",
     "babel-preset-es2015": "^6.1.18",
