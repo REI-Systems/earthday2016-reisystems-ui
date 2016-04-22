@@ -1,8 +1,8 @@
 "use strict";
 
-describe('helloworld.controller', function() {
+describe('home.controller', function() {
   var _scope;
-  var CONTROLLER_NAME = 'HelloWorldCtrl as hwCtrl';
+  var CONTROLLER_NAME = 'HomeCtrl as hwCtrl';
 
   beforeEach(module('app'));
 
@@ -13,12 +13,6 @@ describe('helloworld.controller', function() {
   describe('init', function() {
     it('should be initialized correctly', inject(function ($controller) {
       $controller(CONTROLLER_NAME, {$scope: _scope});
-    }));
-
-    it('should have helloWorld', inject(function ($controller) {
-      $controller(CONTROLLER_NAME, {$scope: _scope});
-
-      expect(_scope.HelloWorld).toBeTruthy();
     }));
   });
 });
