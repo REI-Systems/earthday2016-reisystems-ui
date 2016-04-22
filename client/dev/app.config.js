@@ -5,9 +5,8 @@
     .config(['$routeProvider', function($routeProvider) {
       $routeProvider
         .when('/', {
-          templateUrl: 'webapp/templates/HelloWorld.html',
-          controller: 'HelloWorldCtrl',
-          controllerAs: 'hwCtrl'
+          templateUrl: 'webapp/templates/home.html',
+          controller: 'HomeCtrl'
         })
         .when('/map', {
           templateUrl: 'webapp/templates/map.html',
