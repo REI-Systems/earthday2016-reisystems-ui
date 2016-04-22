@@ -4,6 +4,15 @@
   var myApp = angular.module('app');
 
   myApp.controller('HomeCtrl', ['$scope', '$timeout', '$mdSidenav', '$log', '$http', function ($scope, $timeout, $mdSidenav, $log, $http) {
+function formatAbbreviation(x) {
+ var s = d3.format('2s')(x);
+ var a = s[s.length - 1];
+ var b = s.substr(0, s.length - 1);
+ switch (s[s.length - 1]) {
+   case "G": a = "B";
+ }
+ return d3.format('.2f')(b) + a;
+}
 
     $http({
       method: 'GET',
@@ -13,11 +22,12 @@
       $scope.amount = response.data.amount;
       $scope.amountSustainable = response.data.amountSustainable;
       $scope.percentage = d3.format('.2f')(($scope.amountSustainable / $scope.amount) * 100);
-      $scope.formattedAmount = d3.format('2s')($scope.amount);
+      $scope.formattedAmount = formatAbbreviation($scope.amount);
     }, function errorCallback(response) {
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
+
 
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');

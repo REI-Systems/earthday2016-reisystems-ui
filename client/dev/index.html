@@ -45,15 +45,13 @@
           <h1 hide-xs hide-sm show-gt-sm style="color: #fff; font-weight: 700;">Federal Dashboard on Sustainable Purchasing</h1>
           <span flex></span>
           <div class="ui label">
-            <i class="mail icon"></i> 100M
+            <i class="money icon"></i> {{ formattedAmount }}
             <a class="detail">Total Federal Spending</a>
           </div>
-          <md-button class="md-icon-button" aria-label="Favorite">
-            num1
-          </md-button>
-          <md-button class="md-icon-button" aria-label="More">
-            num2
-          </md-button>
+          <div class="ui label">
+            <i class="money icon"></i> {{ percentage }} %
+            <a class="detail">Sustainable Spending</a>
+          </div>
         </div>
       </md-toolbar>
     </md-content>
