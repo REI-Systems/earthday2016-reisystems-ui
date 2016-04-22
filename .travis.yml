@@ -1,10 +1,14 @@
 language: node_js
-
 node_js:
-  - "5"
-
+- '5'
 before_script:
-  - npm install -g bower gulp-cli mocha
-  - bower install
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+- npm install -g bower gulp-cli mocha
+- bower install
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+deploy:
+  provider: heroku
+  api_key:
+    secure: W69JQblBhQhZnHmTGkoIldURF1wpVVkrMRb5/bnLchfqVtYHSuqlm0tq8wbGLSd3+H58nhhpbeM7oMrJBG8ruqg7xcyuiBLj0HwFN9RK6VIrTYsdzt4xy2CG3mTGZ7pGLihx4kEMCXAQQI99joeVajgi4jU6/cuSEqd1n+rBPD8jmC3lPBxPzZ50L97u4P8L4eZv+y8gt3tm2P6AZ7QoEImIneF1f8LiEHk567kzmV3Xh0egZ2vpfezC03XMII4MgASaV4ffXvtYGIx7RRDdPNHEdKLFb+4OXbvlGar/IRl+EoVcf1m48exoBm1LmIm2tALmMbCIjdmUOopGKqhdRUDdgjJGXUm2GzOqyba88jiiwhHrGB2X9d7QFdSpus6y5LdtAEIa1CdKmf1l5cytiJYX7XFxTjWYJhL7bd2EpwMO53qAGQs/2lR0Y5SEpT0DhWna66hCaGkSELXmLWl8Ar926pYLu5FMY4REmNqdPAfDFVtohigWaJsBtjJiPonJ8xagOfjkxDf6izN2l3zbJyV9nNJZCh7EUMsqJLzUekh7r/zZ/8PEKD8cAJ2olc1tdm40VHPi0Vf1x3iANCb+lU27GdGKQItk2/FeeHkr3RUsbzAPhsNfozZAj33X70IEkOj1tkboqHXKXWjooukkF4F4vqsGqUMx5631akqEbMc=
+  app:
+    develop: earthday2016-reisystems-ui
