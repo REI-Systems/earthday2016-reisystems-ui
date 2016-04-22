@@ -6,8 +6,7 @@
     function($scope, $document, d3Service, StateData) {
       $scope.drawMap = function() {
         var width = 960,
-          height = 500,
-          active = d3.select(null);
+          height = 500;
 
         var colorScale = d3Service.colorScale($scope.min, $scope.max);
 
@@ -33,16 +32,18 @@
 
         d3.json("assets/data/us.json", function(error, us) {
           d3.tsv("assets/data/us-county-names.tsv", function(tsv) {
-            var names = {};
+            var names = {}, fullNames = {};
             tsv.forEach(function(d,i){
               names[d.id] = d.code;
+              fullNames[d.id] = d.name;
             });
 
             var tip = d3.tip()
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d) {
-                return "<strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]] + "%";
+                console.log(d);
+                return "<strong>State:</strong> " + fullNames[d['id']] +"<br/><strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]] + "%";
               });
 
             svg.call(tip);
