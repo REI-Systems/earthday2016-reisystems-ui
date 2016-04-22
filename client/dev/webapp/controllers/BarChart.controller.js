@@ -25,7 +25,7 @@
         });
 
       angular.forEach($scope.data, function(d) {
-        d.amount = (d.amountSustainable / d.amount) * 100;
+        d.amount = d3.format('.2f')((d.amountSustainable / d.amount) * 100);
       });
 
       x.domain($scope.data.map(function(d) { return d.name; }));
