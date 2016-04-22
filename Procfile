@@ -1,1 +1,1 @@
-web: /client/dev
+web: npm start
