@@ -33,7 +33,69 @@
 
   <body>
 
-    <div ng-view flex style="height: 100%;"></div>
+    <div ng-controller="HelloWorldCtrl" layout-fill ng-cloak>
+
+      <md-content layout="column">
+        <md-toolbar>
+          <div class="md-toolbar-tools">
+            <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-sm>
+              <i class="sidebar icon"></i>
+            </md-button>
+            <h1 hide-xs hide-sm show-gt-sm style="color: #fff; font-weight: 700;">Project title</h1>
+          </div>
+        </md-toolbar>
+      </md-content>
+
+      <section layout="row" layout-fill flex>
+        <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')" md-disable-backdrop md-whiteframe="4">
+          <md-toolbar class="md-theme-light" hide-gt-sm>
+            <h1 class="md-toolbar-tools">Sidenav Left</h1>
+          </md-toolbar>
+          <md-content ng-controller="LeftCtrl">
+
+            <md-list flex>
+              <md-list-item ng-href="/">
+                <div class="md-list-item-text" layout="column">
+                  <h3><i class="fa fa-home" aria-hidden="true"></i> <span style="font-size: 16px; font-weight:700;"> Home</span></h3>
+                </div>
+              </md-list-item>
+              <md-divider ></md-divider>
+            </md-list>
+            <md-list-item ng-href="/about">
+                <div class="md-list-item-text" layout="column">
+                  <h3><i class="fa fa-users" aria-hidden="true"></i> <span style="font-size: 16px; font-weight:700;"> About</span></h3>
+                </div>
+              </md-list-item>
+              <md-divider ></md-divider>
+            </md-list>
+
+            <md-button ng-click="close()" class="md-primary" hide-gt-sm>
+              Close Sidenav Left
+            </md-button>
+          </md-content>
+        </md-sidenav>
+
+        <md-content flex layout-padding>
+          <div layout="column" layout-fill layout-align="top center">
+            <div ng-view flex></div>
+          </div>
+        </md-content>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+          <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">Sidenav Right</h1>
+          </md-toolbar>
+          <md-content ng-controller="RightCtrl" layout-padding>
+            <md-button ng-click="close()" class="md-primary">
+              Close Sidenav Right
+            </md-button>
+          </md-content>
+        </md-sidenav>
+
+      </section>
+    </div>
+
+
 
     <script>
       (function(i, s, o, g, r, a, m) {
