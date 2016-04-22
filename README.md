@@ -10,3 +10,6 @@
 ## Test
     $ npm test
   
+## Links
+
+* https://github.com/ericmdantas/generator-ng-fullstack
