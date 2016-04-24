@@ -28,7 +28,7 @@
         d.amount = d3.format('.2f')((d.amountSustainable / d.amount) * 100);
       });
 
-      x.domain($scope.data.map(function(d) { return d.name; }));
+      x.domain($scope.data.map(function(d) { return d.acronym; }));
       y.domain([0, d3.max($scope.data, function(d) { return d.amount; })]);
 
       var xAxis = d3.svg.axis()
@@ -38,7 +38,7 @@
       var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .ticks(20);
+        .ticks(10);
 
       var svg = d3.select("#homeBarChart").append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -47,7 +47,7 @@
         .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-      x.domain(data.map(function(d) { return d.name; }));
+      x.domain(data.map(function(d) { return d.acronym; }));
       y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
       svg.call(tip);
@@ -57,10 +57,9 @@
         .attr("transform", "translate(0," + height + ")")
         .call(xAxis)
         .selectAll("text")
-        .style("text-anchor", "end")
         .attr("dx", "-.4em")
-        .attr("dy", "-.55em")
-        .attr("transform", "rotate(-90)" );
+        .attr("dy", ".65em")
+        .attr("transform", "rotate(0)" );
 
       svg.append("g")
         .attr("class", "y axis")
@@ -75,7 +74,7 @@
         .data(data)
         .enter().append("rect")
         .style("fill", function(d,i){return color(d['amount']);})
-        .attr("x", function(d) { return x(d.name); })
+        .attr("x", function(d) { return x(d.acronym); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.amount); })
         .attr("height", function(d) { return height - y(d.amount); })
