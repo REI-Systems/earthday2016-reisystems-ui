@@ -18,7 +18,7 @@
         Agencies.get(function (data) {
           var states = data['_embedded']['spending'];
           StateTransactions.get({stateCode: currentStateAbbreviation}, function (data) {
-            $scope.state = state;
+            $scope.count = data._embedded.count;
             $scope.rows = data._embedded.transactions;
           });
           return;
