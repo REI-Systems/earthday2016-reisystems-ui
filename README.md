@@ -6,23 +6,13 @@
 Application - https://earthday2016-reisystems-ui.herokuapp.com/
 Trello - https://trello.com/b/OJQy8Ub4/earth-day-hackathon
 
+Deployment Instructions 
 ## Install
     $ npm install && bower install
-
 ## Run
     $ npm start
-    
 ## Test
     $ npm test
-  
 ## Links
-
 * https://github.com/ericmdantas/generator-ng-fullstack
-
-UI Screenshots
-Chart 1
-![alt text](https://raw.githubusercontent.com/REI-Systems/earthday2016-reisystems-ui/develop/documentation/Screen%20Shot%202016-04-22%20at%203.33.19%20PM.png)
-
-Chart 2
-![alt text](https://raw.githubusercontent.com/REI-Systems/earthday2016-reisystems-ui/develop/documentation/Screen%20Shot%202016-04-22%20at%203.44.57%20PM.png)
 
