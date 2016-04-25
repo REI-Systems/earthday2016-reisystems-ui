@@ -6,7 +6,7 @@
 Application - https://earthday2016-reisystems-ui.herokuapp.com/
 Trello - https://trello.com/b/OJQy8Ub4/earth-day-hackathon
 
-Deployment Instructions 
+## Deployment Instructions 
 ## Install
     $ npm install && bower install
 ## Run
