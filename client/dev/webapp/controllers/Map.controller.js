@@ -42,7 +42,7 @@
               .attr('class', 'd3-tip')
               .offset([-10, 0])
               .html(function(d) {
-                console.log(d);
+                //console.log(d);
                 return "<strong>State:</strong> " + fullNames[d['id']] +"<br/><strong>Amount Sustainable:</strong> " + $scope.data[names[d['id']]] + "%";
               });
 
@@ -58,7 +58,8 @@
                 return colorScale(d);
               })
               .on('mouseover', tip.show)
-              .on('mouseout', tip.hide);
+              .on('mouseout', tip.hide)
+              .on('click', function(d){stateDrill(names[d['id']])});
 
             g.append("path")
               .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
@@ -67,6 +68,10 @@
           });
         });
       };
+
+      function stateDrill(stateAcronym) {
+        window.location = '/state/' + stateAcronym;
+      }
 
       $scope.drawLegend = function() {
         //  TODO
