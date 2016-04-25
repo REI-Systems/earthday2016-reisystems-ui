@@ -8,7 +8,7 @@
 
       var data = $scope.data;
 
-      var margin = {top: 10, right: 30, bottom: 200, left: 150},
+      var margin = {top: 10, right: 30, bottom: 100, left: 150},
         width = 950 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
@@ -42,7 +42,7 @@
 
       var svg = d3.select("#homeBarChart").append("svg")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom + 200)
+        .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
