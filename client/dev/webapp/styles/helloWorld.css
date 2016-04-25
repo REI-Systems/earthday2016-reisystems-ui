@@ -3,7 +3,7 @@ h1 {
   font-size: 50px;
 }
 .information i{
-    background: #757575;
+   border:2px solid #d6d6d6;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
