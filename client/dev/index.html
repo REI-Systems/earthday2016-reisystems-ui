@@ -89,7 +89,7 @@
           </md-button>
         </md-content>
       </md-sidenav>-->
-      <md-content flex layout-padding style="overflow-y: visible;">
+      <md-content flex layout-padding style="overflow: visible;">
         <div layout="column" layout-fill layout-align="top center">
           <div ng-view flex></div>
         </div>
@@ -107,12 +107,14 @@
       </md-sidenav>
 
     </section>
-      <md-footer flex>
+      <md-content layout="column">
+      <md-footer>
           <div layout="row">
               <i class="leaf icon"></i> Team
               <a class="detail">47 52 45 45 4E</a>
           </div>
       </md-footer>
+          </md-content>
   </div>
 
 
