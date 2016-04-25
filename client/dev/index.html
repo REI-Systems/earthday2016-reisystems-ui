@@ -44,14 +44,28 @@
           </md-button>
           <h1 hide-xs hide-sm show-gt-sm style="color: #fff; font-weight: 700;"><i class="leaf icon"></i> Federal Dashboard on Sustainable Purchasing</h1>
           <span flex></span>
-          <div class="ui label">
+          <!--<div class="ui label">
             <i class="money icon"></i> {{ formattedAmount }}
             <a class="detail">Total Federal Spending</a>
           </div>
           <div class="ui label">
             <i class="money icon"></i> {{ percentage }} %
             <a class="detail">Sustainable Spending</a>
-          </div>
+          </div>-->
+            <md-list flex>
+                <md-list-item ng-href="/">
+                    <div class="md-list-item-text" layout="column">
+                        <h3><i class="fa fa-home" aria-hidden="true"></i> <span style="font-size: 16px; font-weight:700;"> Home</span></h3>
+                    </div>
+                </md-list-item>
+
+            <md-list-item ng-href="/about">
+                <div class="md-list-item-text" layout="column">
+                    <h3><i class="fa fa-users" aria-hidden="true"></i> <span style="font-size: 16px; font-weight:700;"> About</span></h3>
+                </div>
+            </md-list-item>
+
+            </md-list>
         </div>
       </md-toolbar>
     </md-content>
