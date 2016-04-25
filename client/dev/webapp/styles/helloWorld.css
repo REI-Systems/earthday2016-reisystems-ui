@@ -7,4 +7,11 @@ h1 {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
+    margin:0 auto;
+}
+.information.layout-row {
+    background: #efefef none repeat scroll 0 0;
+    height: 120px;
+    padding: 20px;
+    text-align: center;
 }
