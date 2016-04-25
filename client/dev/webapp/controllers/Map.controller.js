@@ -76,8 +76,8 @@
         StateData.get(function(data) {
           var d = {};
 
-          angular.forEach(data['_embedded']['contextBasedSpendingList'], function(c) {
-            d[c['acronym']] = d3.format('.2f')((c['amountSustainable'] / c['amount']) * 100);
+          angular.forEach(data['_embedded']['spending'], function(c) {
+            d[c['context']['abbreviation']] = d3.format('.2f')((c['amountSustainable'] / c['amount']) * 100);
           });
           $scope.data = d;
           $scope.min = 0;

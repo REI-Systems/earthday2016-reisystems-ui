@@ -22,14 +22,14 @@
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-          return "<strong>Agency:</strong> " + d.name +"<br/><strong>Amount Sustainable:</strong> " + d.amount + "%";
+          return "<strong>Agency:</strong> " + d.context.name +"<br/><strong>Amount Sustainable:</strong> " + d.amount + "%";
         });
 
       angular.forEach($scope.data, function(d) {
         d.amount = d3.format('.2f')((d.amountSustainable / d.amount) * 100);
       });
 
-      x.domain($scope.data.map(function(d) { return d.acronym; }));
+      x.domain($scope.data.map(function(d) { return d.context.abbreviation; }));
       y.domain([0, d3.max($scope.data, function(d) { return d.amount; })]);
 
       var xAxis = d3.svg.axis()
@@ -48,7 +48,7 @@
         .attr("transform",
           "translate(" + margin.left + "," + margin.top + ")");
 
-      x.domain(data.map(function(d) { return d.acronym; }));
+      x.domain(data.map(function(d) { return d.context.abbreviation; }));
       y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
       svg.call(tip);
@@ -75,13 +75,13 @@
         .data(data)
         .enter().append("rect")
         .style("fill", function(d,i){return color(d['amount']);})
-        .attr("x", function(d) { return x(d.acronym); })
+        .attr("x", function(d) { return x(d.context.abbreviation); })
         .attr("width", x.rangeBand())
         .attr("y", function(d) { return y(d.amount); })
         .attr("height", function(d) { return height - y(d.amount); })
         .on('mouseover', tip.show)
         .on('mouseout', tip.hide)
-        .on('click', function(d){agencyDrill(d.acronym)});
+        .on('click', function(d){agencyDrill(d.context.abbreviation)});
     };
 
     function agencyDrill(agencyAcronym) {
@@ -90,7 +90,7 @@
 
     $document.ready(function() {
       Agencies.get(function(data) {
-        $scope.data = data['_embedded']['contextBasedSpendingList'];
+        $scope.data = data['_embedded']['spending'];
         $scope.drawBarTrend();
       });
     });
