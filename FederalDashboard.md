@@ -118,7 +118,7 @@ Goals for the Sprint 4 are the following:
 Please visit the final web page:
 https://earthday2016-reisystems-ui.herokuapp.com/
 
-![alt text](https://github.com/akozak-reisys/documents/blob/master/images/release%20finalv1.jpg "Kanban on April 25,2016")
+![alt text](https://github.com/akozak-reisys/documents/blob/master/images/final.jpg "Final Release")
 
 #Collaboration
 Team collaborated throughout the hackathon day. 
@@ -130,7 +130,7 @@ In addition, Team met discussed must haves and confirmed the tasks priority with
 Team had a pleasure to met the Business Owner and Federal Chief Sustainability Officer - Christine Harada - which made the experience somuch more memorable!
 ![alt text](https://github.com/akozak-reisys/documents/blob/master/images/20160422_152600.jpg "Picture with Christine Harada")
 ---
-![alt text] (https://github.com/akozak-reisys/documents/blob/master/images/20160422_091055.jpg "Speech")
+![alt text] (https://github.com/akozak-reisys/documents/blob/master/images/20160422_091055.jpg "Opening Speech")
 ![alt text] (https://github.com/akozak-reisys/documents/blob/master/images/20160422_091100.jpg "Viktor and Hieu")
 ![alt text](https://github.com/akozak-reisys/documents/blob/master/images/20160422_112542.jpg "Anita and Team")
 ![alt text](https://github.com/akozak-reisys/documents/blob/master/images/20160422_112611.jpg "Team")
