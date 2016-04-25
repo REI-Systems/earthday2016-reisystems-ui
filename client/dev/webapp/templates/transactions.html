@@ -4,12 +4,15 @@
   Loading...
 </div>
 
+<h3 ng-show="agency">
+  <strong>{{agency.context.name}}</strong> transactions
+</h3>
+
 <table class="ui celled table">
   <thead ng-show="rows">
     <tr>
       <th>#</th>
       <th>id</th>
-      <th>agency</th>
       <th>productName</th>
       <th>state</th>
       <th>date</th>
@@ -20,7 +23,6 @@
   <tr>
     <td>{{$index}}</td>
     <td>{{row.identifier}}</td>
-    <td>{{row.agencyName}}</td>
     <td>{{row.productName}}</td>
     <td>{{row.stateCode}}</td>
     <td>{{row.date | date}}</td>

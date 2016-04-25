@@ -19,7 +19,8 @@
           var agencies = data['_embedded']['spending'];
           angular.forEach(agencies, function (agency) {
             if (currentAgencyAbbreviation == agency.context.abbreviation) {
-              Transactions.get({agency: agency.context.identifier}, function (data) {
+              Transactions.get({agencyId: agency.context.identifier}, function (data) {
+                $scope.agency = agency;
                 $scope.rows = data._embedded.transactions;
               });
               return;
