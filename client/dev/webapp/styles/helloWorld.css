@@ -3,13 +3,9 @@ h1 {
   font-size: 50px;
 }
 .information i{
-   border:2px solid #d6d6d6;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    border-radius: 50%;
+    font-size: 2em;
     margin:0 auto;
 }
-
 .information.layout-row {
     background: #efefef none repeat scroll 0 0;
     padding: 30px 0;
