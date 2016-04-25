@@ -10,21 +10,23 @@
       <th>#</th>
       <th>Acronym</th>
       <th>Name</th>
-      <th>Amount</th>
-      <th>Amount Sustainable</th>
+      <th>Total Amount, $</th>
+      <th>Amount Sustainable, $</th>
+      <th>Sustainable (%)</th>
     </tr>
   </thead>
   <tbody ng-repeat="row in rows">
   <tr>
-    <th>{{$index}}</th>
+    <td>{{$index}}</td>
     <td>{{row.acronym}}</td>
     <td>{{row.name}}</td>
-    <td>{{row.amount}}</td>
-    <td>{{row.amountSustainable}}</td>
+    <td>{{row.amount | number : 2}}</td>
+    <td>{{row.amountSustainable | number : 2}}</td>
+    <td>{{row.amountSustainable / row.amount * 100 | number : 2}} %</td>
   </tr>
   </tbody>
   <tfoot>
-  <tr><th colspan="5">
+  <tr><th colspan="6">
     <div class="ui right floated pagination menu">
       <a class="icon item">
         <i class="left chevron icon"></i>
