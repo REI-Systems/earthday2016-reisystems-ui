@@ -3,7 +3,8 @@
 
   var myApp = angular.module('app');
 
-  myApp.controller('BarChartCtrl', ['$scope', '$document', 'Agencies', 'd3Service', function($scope, $document, Agencies, d3Service) {
+  myApp.controller('BarChartCtrl', ['$scope', '$document', '$location', 'Agencies', 'd3Service',
+    function($scope, $document, $location, Agencies, d3Service) {
     $scope.drawBarTrend = function() {
 
       var data = $scope.data;
@@ -79,8 +80,13 @@
         .attr("y", function(d) { return y(d.amount); })
         .attr("height", function(d) { return height - y(d.amount); })
         .on('mouseover', tip.show)
-        .on('mouseout', tip.hide);
+        .on('mouseout', tip.hide)
+        .on('click', function(d){agencyDrill(d.acronym)});
     };
+
+    function agencyDrill(agencyAcronym) {
+      window.location = '/agency/' + agencyAcronym;
+    }
 
     $document.ready(function() {
       Agencies.get(function(data) {

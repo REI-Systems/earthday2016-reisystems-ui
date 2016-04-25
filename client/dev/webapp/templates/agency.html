@@ -4,19 +4,44 @@
   Loading...
 </div>
 
-<table class="md-api-table">
+<table class="ui celled table">
+  <thead ng-show="rows">
+    <tr>
+      <th>#</th>
+      <th>Acronym</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Amount Sustainable</th>
+    </tr>
+  </thead>
   <tbody ng-repeat="row in rows">
   <tr>
     <th>{{$index}}</th>
-    <td>{{row.identifier}}</td>
     <td>{{row.acronym}}</td>
     <td>{{row.name}}</td>
     <td>{{row.amount}}</td>
+    <td>{{row.amountSustainable}}</td>
   </tr>
   </tbody>
+  <tfoot>
+  <tr><th colspan="5">
+    <div class="ui right floated pagination menu">
+      <a class="icon item">
+        <i class="left chevron icon"></i>
+      </a>
+      <a class="item">1</a>
+      <a class="item">2</a>
+      <a class="item">3</a>
+      <a class="item">4</a>
+      <a class="icon item">
+        <i class="right chevron icon"></i>
+      </a>
+    </div>
+  </th>
+  </tr></tfoot>
 </table>
 
-<div ng-show="rows">
+<div ng-show="false">
   <p>Current page:
     <input type="number" min="1" max="{{ pagination.getTotalPages() }}" ng-model="pagination.pageNumber"
            ng-change="load()">of {{ pagination.getTotalPages() }}

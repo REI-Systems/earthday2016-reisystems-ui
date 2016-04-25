@@ -12,6 +12,10 @@
           templateUrl: 'webapp/templates/about.html',
           controller: 'AboutCtrl'
         })
+        .when('/agency/:agencyName', {
+          templateUrl: 'webapp/templates/agency.html',
+          controller: 'AgencyCtrl'
+        })
         .when('/map', {
           templateUrl: 'webapp/templates/map.html',
           controller: 'MapCtrl'
@@ -19,10 +23,6 @@
         .when('/bubble', {
           templateUrl: 'webapp/templates/bubble.html',
           controller: 'BubbleCtrl'
-        })
-        .when('/table', {
-          templateUrl: 'webapp/templates/table.html',
-          controller: 'TableCtrl'
         })
         .when('/trend', {
           templateUrl: 'webapp/templates/trend.html',
