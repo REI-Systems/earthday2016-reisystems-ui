@@ -85,7 +85,7 @@
     };
 
     function agencyDrill(agencyAcronym) {
-      window.location = '/agency/' + agencyAcronym;
+      window.location = '/transactions/agency/' + agencyAcronym;
     }
 
     $document.ready(function() {
