@@ -20,6 +20,10 @@
           templateUrl: 'webapp/templates/map.html',
           controller: 'MapCtrl'
         })
+        .when('/transactions/state/:state', {
+          templateUrl: 'webapp/templates/stateTransactions.html',
+          controller: 'StateTransactionsCtrl'
+        })
         .when('/bubble', {
           templateUrl: 'webapp/templates/bubble.html',
           controller: 'BubbleCtrl'

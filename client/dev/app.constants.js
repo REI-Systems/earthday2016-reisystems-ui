@@ -8,6 +8,7 @@
     'TREND_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds/sustainability/trend',
     'AGENCIES_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds/sustainability/agencies',
     'AGENCY_TREND_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds/sustainability/agencies/:agency/trend',
-    'AGENCY_TRANSACTIONS_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds'
+    'AGENCY_TRANSACTIONS_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds',
+    'STATE_TRANSACTIONS_ENDPOINT': '//earthday2016-reisystems.herokuapp.com/api/v1/fpds'
   });
 }();

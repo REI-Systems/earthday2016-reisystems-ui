@@ -70,7 +70,7 @@
       };
 
       function stateDrill(stateAcronym) {
-        window.location = '/state/' + stateAcronym;
+        window.location = '/transactions/state/' + stateAcronym;
       }
 
       $scope.drawLegend = function() {
