@@ -5,7 +5,7 @@
 
 * Application - https://earthday2016-reisystems-ui.herokuapp.com/
 * Trello - https://trello.com/b/OJQy8Ub4/earth-day-hackathon
-* Process - 
+* Process - https://github.com/REI-Systems/earthday2016-reisystems-ui/blob/develop/FederalDashboard.md
 
 ## Deployment Instructions 
 ## Install
