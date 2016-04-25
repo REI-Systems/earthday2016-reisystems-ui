@@ -12,9 +12,9 @@
           templateUrl: 'webapp/templates/about.html',
           controller: 'AboutCtrl'
         })
-        .when('/agency/:agencyName', {
-          templateUrl: 'webapp/templates/agency.html',
-          controller: 'AgencyCtrl'
+        .when('/transactions/agency/:agency', {
+          templateUrl: 'webapp/templates/transactions.html',
+          controller: 'TransactionsCtrl'
         })
         .when('/map', {
           templateUrl: 'webapp/templates/map.html',
