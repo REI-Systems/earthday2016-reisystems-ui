@@ -103,21 +103,7 @@
         </md-content>
       </md-sidenav>-->
       <md-content flex style="overflow: visible;">
-          <div layout="row" class="information">
-              <div flex="50" layout="column">
-                  <i class="circular payment icon"></i>
-                  <span style="color:#46b04a">{{ formattedAmount }}</span>
-                  <span>Total Federal Spending</span>
-              </div>
-              <div flex="50" layout="column">
-                  <i class="circular pie chart icon"></i>
-                  <span style="color:#46b04a">{{ percentage }} %</span>
-                  <span>Sustainable Spending</span>
-              </div>
-          </div>
-        <div layout="column" layout-fill layout-align="top center">
           <div ng-view flex></div>
-        </div>
       </md-content>
 
       <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
