@@ -9,10 +9,9 @@
     <tr>
       <th>#</th>
       <th>id</th>
-      <th>agencyId</th>
-      <th>agencyName</th>
+      <th>agency</th>
       <th>productName</th>
-      <th>stateCode</th>
+      <th>state</th>
       <th>date</th>
       <th>amount</th>
     </tr>
@@ -21,12 +20,11 @@
   <tr>
     <td>{{$index}}</td>
     <td>{{row.identifier}}</td>
-    <td>{{row.agencyId}}</td>
     <td>{{row.agencyName}}</td>
     <td>{{row.productName}}</td>
     <td>{{row.stateCode}}</td>
-    <td>{{row.date}}</td>
-    <td>{{row.amount | number : 2}}</td>
+    <td>{{row.date | date}}</td>
+    <td>$ {{row.amount | number : 2}}</td>
   </tr>
   </tbody>
   <tfoot>
