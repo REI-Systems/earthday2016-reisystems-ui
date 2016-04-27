@@ -1,5 +1,4 @@
 <div layout="column" layout-fill layout-align="top center">
-<a href="/">&lt;-- Home</a>
 
 <div ng-hide="rows">
   Loading...
@@ -16,9 +15,8 @@
       <th>id</th>
       <th>productName</th>
       <th>state</th>
-      <th>state</th>
-      <th>date</th>
-      <th>amount</th>
+      <th>Date</th>
+      <th>Amount</th>
     </tr>
   </thead>
   <tbody ng-repeat="row in rows">
@@ -28,7 +26,7 @@
     <td>{{row.productName}}</td>
     <td>{{row.stateCode}}</td>
     <td>{{row.date | date}}</td>
-    <td>$ {{row.amount | number : 2}}</td>
+    <td style="text-align:right !important;">$ {{row.amount | number : 2}}</td>
   </tr>
   </tbody>
   <tfoot>
