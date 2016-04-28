@@ -11,17 +11,38 @@
       $scope.drawTable = function () {
         //pagination vars
         $scope.currentPage = 1;
-        $scope.perPage = 20;
+        $scope.perPage = 10;
+        $scope.offset = 0;
 
-        var state = false;
-
-        Agencies.get(function (data) {
-          var states = data['_embedded']['spending'];
-          StateTransactions.get({stateCode: currentStateAbbreviation}, function (data) {
+        StateTransactions.get({stateCode: currentStateAbbreviation}, function (data) {
             $scope.count = data._embedded.count;
             $scope.rows = data._embedded.transactions;
-          });
-          return;
+        });
+      return;
+      };
+
+      $scope.nextPage = function (){
+        console.log('next page');
+        $scope.offset = $scope.currentPage*$scope.perPage;
+        StateTransactions.get({stateCode: currentStateAbbreviation, offset: $scope.offset},
+        function (data) {
+            $scope.count = data._embedded.count;
+            $scope.rows = data._embedded.transactions;
+        });
+        $scope.currentPage++;
+      };
+
+      $scope.prevPage = function (){
+        console.log('prev page');
+        if($scope.currentPage>1){
+            $scope.currentPage--;
+        }
+
+        $scope.offset = ($scope.currentPage-1)*$scope.perPage;
+        StateTransactions.get({stateCode: currentStateAbbreviation, offset: $scope.offset},
+        function (data) {
+            $scope.count = data._embedded.count;
+            $scope.rows = data._embedded.transactions;
         });
       };
 
@@ -29,4 +50,5 @@
         $scope.drawTable();
       });
     }]);
+
 }();

@@ -1,5 +1,4 @@
 <div layout="column" layout-fill layout-align="top center">
-<a href="/">&lt;-- Home</a>
 
 <div ng-hide="rows">
   Loading...
@@ -13,11 +12,11 @@
   <thead ng-show="rows">
     <tr>
       <th>#</th>
-      <th>id</th>
-      <th>productName</th>
-      <th>state</th>
-      <th>date</th>
-      <th>amount</th>
+      <th>Id</th>
+      <th>Name</th>
+      <th>State</th>
+      <th>Date</th>
+      <th style="text-align:right !important;">Amount</th>
     </tr>
   </thead>
   <tbody ng-repeat="row in rows">
@@ -27,20 +26,17 @@
     <td>{{row.productName}}</td>
     <td>{{row.stateCode}}</td>
     <td>{{row.date | date}}</td>
-    <td>$ {{row.amount | number : 2}}</td>
+    <td style="text-align:right !important;">$ {{row.amount | number : 2}}</td>
   </tr>
   </tbody>
   <tfoot>
   <tr><th colspan="8">
     <div class="ui right floated pagination menu">
-      <a class="icon item">
+      <a class="icon item" ng-click="prevPage()">
         <i class="left chevron icon"></i>
       </a>
-      <a class="active item">1</a>
-      <a class="item">2</a>
-      <a class="item">3</a>
-      <a class="item">4</a>
-      <a class="icon item">
+
+      <a class="icon item" ng-click="nextPage()">
         <i class="right chevron icon"></i>
       </a>
     </div>
