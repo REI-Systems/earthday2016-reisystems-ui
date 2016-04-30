@@ -23,6 +23,7 @@
               Transactions.get({agencyId: agency.context.identifier}, function (data) {
                 $scope.agency = agency;
                 $scope.rows = data._embedded.transactions;
+                $scope.count = data.count;
               });
               return;
             }
@@ -34,7 +35,8 @@
         console.log('next page');
         $scope.offset = $scope.currentPage*$scope.perPage;
         Transactions.get({agencyId: $scope.agencyIdentifier, offset: $scope.offset}, function (data) {
-            $scope.rows = data._embedded.transactions;
+          $scope.rows = data._embedded.transactions;
+          $scope.count = data.count;
         });
         $scope.currentPage++;
       };
@@ -47,7 +49,8 @@
 
         $scope.offset = ($scope.currentPage-1)*$scope.perPage;
         Transactions.get({agencyId: $scope.agencyIdentifier, offset: $scope.offset}, function (data) {
-            $scope.rows = data._embedded.transactions;
+          $scope.rows = data._embedded.transactions;
+          $scope.count = data.count;
         });
       };
 

@@ -4,14 +4,13 @@
   Loading...
 </div>
 
-<h3 ng-show="agency">
-  <strong>{{state.context.name}}</strong> transactions
+<h3>
+  <strong>{{stateName}}</strong> has <strong>{{count}}</strong> sustainable transactions
 </h3>
 
 <table class="ui celled table">
   <thead ng-show="rows">
     <tr>
-      <th>#</th>
       <th>Id</th>
       <th>Name</th>
       <th>State</th>
@@ -21,7 +20,6 @@
   </thead>
   <tbody ng-repeat="row in rows">
   <tr>
-    <td>{{$index}}</td>
     <td>{{row.identifier}}</td>
     <td>{{row.productName}}</td>
     <td>{{row.stateCode}}</td>
