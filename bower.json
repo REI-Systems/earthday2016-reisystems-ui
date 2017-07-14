@@ -41,7 +41,7 @@
     "angular-mocks": "~1.4.x"
   },
   "resolutions": {
-    "d3": "~4.9.1",
+    "d3": "~3.5.17",
     "angular": "~1.4.x"
   }
 }
